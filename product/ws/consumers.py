@@ -7,7 +7,7 @@ class NotificationConsumer(WebsocketConsumer) :
     def connect(self):
         self.user = self.scope['user']
 
-        if self.user.is_anonymous:
+        if self.user.is_anonymous or self.user.is_superuser is False :
             self.close()
         
         self.accept()
